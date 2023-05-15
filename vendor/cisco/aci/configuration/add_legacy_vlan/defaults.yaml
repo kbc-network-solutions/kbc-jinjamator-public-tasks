@@ -1,0 +1,27 @@
+###DONOTTOUCHSETTINGSBEGIN##
+wizard_template: simple
+output_plugin: apic
+description: ""
+wizard_ask_before_submit: True
+###DONOTTOUCHSETTINGSEND###
+
+#General Default Settings
+vrf_name: overlay-1
+tenant: infra
+vlan_pool: POC3076
+name_prefix: "" # Set to "" for nothing (IMPORTANT)
+trunk_aep: Trunk-AEP
+ap_name: "" # Set to "" for nothing (IMPORTANT)
+
+
+#BD Settings
+unkMacUcastAct: flood #L2 Unknown Unicast
+unkMcastAct: flood #L3 Unknown Multicast Flooding
+v6unkMcastAct: flood #IPv6 L3 Unknown Multicast
+multiDstPktAct: bd-flood #Multi Destination Flooding
+
+#EPG Settings               
+pcEnfPref: unenforced #Intra EPG Isolation
+prefGrMemb: include # Prefered Group Member
+floodOnEncap: enabled #Floo in Encapsulation
+

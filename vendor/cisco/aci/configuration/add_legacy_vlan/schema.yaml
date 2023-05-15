@@ -1,0 +1,126 @@
+vlan_id:
+  form_step: 1 
+  schema:
+    type: number
+    minimum: 2
+    maximum: 3968
+    required: True
+    disallow:
+      - 1
+      - 1002
+      - 1003
+      - 1004
+      - 1005
+    title: VLAN ID
+  options:
+    order: 1
+    helpers: 
+      - '<strong>Enter the VLAN ID</strong> (2-3968 excluding 1002-1005) (Example:</strong> 10)'
+
+
+vrf_name:
+  form_step: 1
+  schema:
+{% if (apic_url is defined) and (((apic_username is defined) and (apic_password is defined)) or (apic_key is defined) and (apic_cert_name is defined) )%}
+{% set vrf_info = cisco.aci.query('api/node/mo/uni/tn-'+tenant+'.json?query-target=children&target-subtree-class=fvCtx&query-target-filter=and(ne(fvCtx.name,"ave-ctrl"))&order-by=fvCtx.modTs|desc')['imdata'] %}
+      required: False
+      #type: string
+      enum:
+      {% for vrf in vrf_info %}
+          - {{vrf['fvCtx']['attributes']['name']}}
+      {% endfor  %}
+      hideInitValidationError: True
+      
+  {% else %}
+  required: True
+  type: string
+  {% endif %}
+  options:
+      order: 3
+      type: select
+      multiselect:
+          enableFiltering: True
+          includeSelectAllOption: True
+          enableCaseInsensitiveFiltering: True
+      multiple: False
+      
+      label: VRF
+      optionLabels:
+      {% for vrf in vrf_info %}
+          - {{vrf['fvCtx']['attributes']['name']}}
+      {% endfor  %}
+      
+      helpers: 
+          - 'Select VRF Profile'
+
+
+ap_name:
+  form_step: 1
+  schema:
+{% if (apic_url is defined) and (((apic_username is defined) and (apic_password is defined)) or (apic_key is defined) and (apic_cert_name is defined) )%}
+{% set ap_info = cisco.aci.query('/api/node/class/fvAp.json?query-target-filter=and(wcard(fvAp.dn,"'+tenant+'"))&order-by=fvAp.modTs|desc')['imdata'] %}
+      required: False
+      #type: string
+      enum:
+      {% for ap in ap_info %}
+          - {{ap['fvAp']['attributes']['name']}}
+      {% endfor  %}
+      hideInitValidationError: True
+      
+  {% else %}
+  required: True
+  type: string
+  {% endif %}
+  options:
+      order: 3
+      type: select
+      multiselect:
+          enableFiltering: True
+          includeSelectAllOption: True
+          enableCaseInsensitiveFiltering: True
+      multiple: False
+      
+      label: Application Profile
+      optionLabels:
+      {% for ap in ap_info %}
+          - {{ap['fvAp']['attributes']['name']}}
+      {% endfor  %}
+      
+      helpers: 
+          - 'Select Application Profile'
+
+
+
+vlan_name:
+  form_step: 1
+  schema:
+    required: True
+    pattern: '^(?:(?:(?:[A-Za-z](?:[a-z]|[0-9])*)|(?:\d+))[-_]?)+$'
+    title: VLAN Name
+  options:
+    order: 4
+    helpers: 
+      - '<strong>Enter the VLAN Name </strong>(Allowed Characters: aA-zZ,0-9,-,_)'
+
+#pattern: '^(?:(?:(?:[A-Z](?:[a-z]|[0-9])*)|(?:\d+))[-]?)+$'
+
+subnet_gw_prefix:
+  form_step: 1 
+  schema:
+    required: False
+    pattern: ^(?:1\d?\d?|2(?:[0-4]\d?|[6789]|5[0-5]?)?|[3-9]\d?|0)(?:\.(?:1\d?\d?|2(?:[0-4]\d?|[6789]|5[0-5]?)?|[3-9]\d?|0)){3}/[\d]{2}$
+    title: Gateway Prefix
+  options:
+    order: 5 
+    helpers: 
+      - '<strong>Enter the Gateway IP with Prefix (min /30 max /10)</strong> (Example: 192.168.50.1/24)'
+
+description:
+  form_step: 1
+  schema:
+    pattern: '^(?:(?:(?:[A-Za-z](?:[a-z]|[0-9])*)|(?:\d+))[-_ ]?)+$'
+    title: Description
+  options:
+    order: 6
+    helpers: 
+      - '<strong>Enter the Description for the new Legacy Vlan</strong> (Allowed Characters: aA-zZ,0-9,-,_)'

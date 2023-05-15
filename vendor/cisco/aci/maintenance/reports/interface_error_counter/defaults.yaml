@@ -1,0 +1,7 @@
+wizard_template: simple
+exclude_empty: True
+nodes_to_collect: []
+include_interface_types:
+    - /phys-
+output_plugin: excel
+wizard_ask_before_submit: True

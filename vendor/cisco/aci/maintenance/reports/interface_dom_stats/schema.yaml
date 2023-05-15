@@ -1,0 +1,33 @@
+collect_ipn:
+  form_step: 1
+  schema:
+    type: boolean
+    required: False
+  options:
+    order: 1
+    helpers:
+      - Should this task try to autodiscover the IPN devices and collect the corresponding DOM values?
+      - WARNING this function is not yet fully implemented!
+    label:
+      Autodiscover and Collect IPN devices
+ipn_username:
+  schema:
+    type: string
+    required: True
+  form_step: 1
+
+  dependencies: 
+    - collect_ipn
+  options:
+    order: 2
+ipn_password:
+  schema:
+    type: string
+    required: True
+  form_step: 1
+
+  dependencies: 
+    - collect_ipn
+  options:
+    order: 3
+    type: password

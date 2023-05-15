@@ -1,0 +1,8 @@
+wizard_template: simple
+wizard_ask_before_submit: True
+ssh_device_type: cisco_nxos
+vrf: default
+vrfs:
+  - default
+  - office
+  - dmz

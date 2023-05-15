@@ -1,0 +1,47 @@
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "infraAttEntityP": {
+                "attributes": {
+                    "annotation": "",
+                    "descr": "{{description}}",
+                    "dn": "uni/infra/attentp-{{name_prefix}}{{vlan_name}}",
+                    "name": "{{name_prefix}}{{vlan_name}}",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "userdom": "all"
+                },
+                "children": [
+                    {
+                        "infraGeneric": {
+                            "attributes": {
+                                "annotation": "",
+                                "descr": "",
+                                "name": "default",
+                                "nameAlias": "",
+                                "userdom": ":all:common:"
+                            },
+                            "children": [
+                                {
+                                    "infraRsFuncToEpg": {
+                                        "attributes": {
+                                            "annotation": "",
+                                            "encap": "vlan-{{vlan_id}}",
+                                            "instrImedcy": "lazy",
+                                            "mode": "native",
+                                            "primaryEncap": "unknown",
+                                            "tDn": "uni/tn-{{tenant}}/ap-{{ap_name}}/epg-{{name_prefix}}{{vlan_name}}",
+                                            "userdom": ":all:common:"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+nodes_to_collect:
+    form_step: 1
+    schema:
+  {% if (apic_url is defined) and (((apic_username is defined) and (apic_password is defined)) or (apic_key is defined) and (apic_cert_name is defined) )%}
+  {% set node_info = cisco.aci.query('/api/node/class/fabricNode.json?query-target-filter=and(gt(fabricNode.id,"99"))&order-by=fabricNode.modTs|desc')['imdata'] %}
+        required: False
+        type: array
+        enum:
+        {% for node in node_info %}
+            - {{node['fabricNode']['attributes']['id']}}
+        {% endfor  %}
+        hideInitValidationError: True
+        
+    {% else %}
+    required: True
+    type: array
+    {% endif %}
+    options:
+        order: 1
+        type: select
+        multiselect:
+            enableFiltering: True
+            includeSelectAllOption: True
+            enableCaseInsensitiveFiltering: True
+        multiple: True
+        
+        label: Switch(es)
+        optionLabels:
+        {% for node in node_info %}
+            - {{node['fabricNode']['attributes']['name']}}
+        {% endfor  %}
+        
+        helpers: 
+            - 'Select Switch(es) to collect'
+
+exclude_empty:
+    form_step: 1
+    schema:
+      type: boolean
+      required: False
+    options:
+      order: 2
+      label: Skip Interfaces without Errors
+
+include_interface_types:
+    form_step: 1
+    schema:
+        required: False
+        type: array
+        enum:
+            - /phys-
+            - /svi-
+            - /encrtd-
+        hideInitValidationError: True
+    options:
+        order: 3
+        type: select
+        multiselect:
+            enableFiltering: True
+            includeSelectAllOption: True
+            enableCaseInsensitiveFiltering: True
+        multiple: True
+        
+        label: Included Interface Types
+        optionLabels:
+            - Physical Interfaces
+            - Switch Virtual Interfaces
+            - L3 Subinterfaces
+        helpers: 
+            - 'Select Interface Type(s) to collect'

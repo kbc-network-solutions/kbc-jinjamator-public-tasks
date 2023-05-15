@@ -1,0 +1,55 @@
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "fvAEPg": {
+                "attributes": {
+                    "annotation": "",
+                    "descr": "{{description}}",
+                    "dn": "uni/tn-{{tenant}}/ap-{{ap_name}}/epg-{{name_prefix}}{{vlan_name}}",
+                    "exceptionTag": "",
+                    "floodOnEncap": "{{floodOnEncap}}",
+                    "fwdCtrl": "",
+                    "hasMcastSource": "no",
+                    "isAttrBasedEPg": "no",
+                    "matchT": "AtleastOne",
+                    "name": "{{name_prefix}}{{vlan_name}}",
+                    "nameAlias": "",
+                    "pcEnfPref": "{{pcEnfPref}}",
+                    "prefGrMemb": "{{prefGrMemb}}",
+                    "prio": "level3",
+                    "shutdown": "no",
+                    "userdom": ":all:common:"
+                },
+                "children": [
+                    {
+                        "fvRsDomAtt": {
+                            "attributes": {
+                                "annotation": "",
+                                "tDn": "uni/phys-{{phys_domain_name}}"
+                            }
+                        }
+                    },
+                    {
+                        "fvRsCustQosPol": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnQosCustomPolName": "",
+                                "userdom": "all"
+                            }
+                        }
+                    },
+                    {
+                        "fvRsBd": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnFvBDName": "{{name_prefix}}{{vlan_name}}",
+                                "userdom": "all"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

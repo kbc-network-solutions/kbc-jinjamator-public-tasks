@@ -1,0 +1,77 @@
+hostname:
+    form_step: 1
+    schema:
+        required: True
+        type: string
+    options:
+        order: 1
+        helper:
+            - Please enter the hostname or ip of the device.
+        label: Hostname or IP
+vrf:
+    form_step: 1
+    schema:
+        enum:
+        {% for vrf in vrfs %}
+            - {{vrf}}
+        {% endfor  %}
+        hideInitValidationError: True
+    options:
+        order: 2
+        type: select
+        multiselect:
+            enableFiltering: True
+            includeSelectAllOption: True
+            enableCaseInsensitiveFiltering: True
+        multiple: False
+        
+        label: VRF
+        optionLabels:
+        {% for vrf in vrfs %}
+            - {{vrf}}
+        {% endfor  %}
+        helpers: 
+            - 'Please select the VRF for the hostname to mac lookup'
+
+{% set groups=cisco.ise.connect().get_endpoint_groups()['response'] %}
+
+
+endpoint_group:
+    form_step: 1
+    schema:
+        enum:
+        {% for group in groups %}
+            - {{group[1]}}
+  
+        {% endfor  %}
+        hideInitValidationError: True
+    options:
+        order: 3
+        type: select
+        multiselect:
+            enableFiltering: True
+            includeSelectAllOption: True
+            enableCaseInsensitiveFiltering: True
+        multiple: False
+    
+    
+        optionLabels:
+        {% for group in groups %}
+            - {{group[0].replace('#',' - ')}}
+        {% endfor  %}
+        helpers: 
+            - 'Please select the devicegroup.'
+
+
+
+
+description:
+    form_step: 1
+    schema:
+        required: True
+        type: string
+    options:
+        order: 4
+        type: text
+        helper:
+            - Please enter a meaningful description

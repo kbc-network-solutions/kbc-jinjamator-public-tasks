@@ -1,0 +1,110 @@
+{
+    "totalCount": "1",
+    "imdata": [
+        {
+            "fvBD": {
+                "attributes": {
+                    "OptimizeWanBandwidth": "no",
+                    "annotation": "",
+                    "arpFlood": "yes",
+                    "descr": "{{description}}",
+                    "dn": "uni/tn-{{tenant}}/BD-{{name_prefix}}{{vlan_name}}",
+                    "epClear": "no",
+                    "epMoveDetectMode": "",
+                    "hostBasedRouting": "no",
+                    "intersiteBumTrafficAllow": "no",
+                    "intersiteL2Stretch": "no",
+                    "ipLearning": "yes",
+                    "ipv6McastAllow": "no",
+                    "limitIpLearnToSubnets": "yes",
+                    "llAddr": "::",
+                    "mac": "00:22:BD:F8:19:FF",
+                    "mcastAllow": "no",
+                    "multiDstPktAct": "{{multiDstPktAct}}",
+                    "name": "{{name_prefix}}{{vlan_name}}",
+                    "nameAlias": "",
+                    "ownerKey": "",
+                    "ownerTag": "",
+                    "type": "regular",
+{%if subnet_gw_prefix %}
+                    "unicastRoute": "yes",
+{%else%} 
+                    "unicastRoute": "no",
+{%endif %} 
+                    "unkMacUcastAct": "{{unkMacUcastAct}}",
+                    "unkMcastAct": "{{unkMcastAct}}",
+                    "userdom": ":all:",
+                    "v6unkMcastAct": "{{v6unkMcastAct}}",
+                    "vmac": "not-applicable"
+                },
+                "children": [
+{%if subnet_gw_prefix %}
+                    {
+                        "fvSubnet": {
+                            "attributes": {
+                                "annotation": "",
+                                "ctrl": "",
+                                "descr": "{{description}}",
+                                "ip": "{{subnet_gw_prefix}}",
+                                "ipDPLearning": "enabled",
+                                "name": "",
+                                "nameAlias": "",
+                                "preferred": "no",
+                                "scope": "private",
+                                "userdom": ":all:common:",
+                                "virtual": "no"
+                            }
+                        }
+                    },
+{%endif %}                    
+                    {
+                        "fvRsMldsn": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnMldSnoopPolName": "",
+                                "userdom": "all"
+                            }
+                        }
+                    },
+                    {
+                        "fvRsIgmpsn": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnIgmpSnoopPolName": "",
+                                "userdom": "all"
+                            }
+                        }
+                    },
+                    {
+                        "fvRsCtx": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnFvCtxName": "{{vrf_name}}",
+                                "userdom": "all"
+                            }
+                        }
+                    },
+                    {
+                        "fvRsBdToEpRet": {
+                            "attributes": {
+                                "annotation": "",
+                                "resolveAct": "resolve",
+                                "tnFvEpRetPolName": "",
+                                "userdom": "all"
+                            }
+                        }
+                    },
+                    {
+                        "fvRsBDToNdP": {
+                            "attributes": {
+                                "annotation": "",
+                                "tnNdIfPolName": "",
+                                "userdom": "all"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

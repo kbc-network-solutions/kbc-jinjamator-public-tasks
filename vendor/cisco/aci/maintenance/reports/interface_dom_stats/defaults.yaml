@@ -1,0 +1,10 @@
+{% if collect_ipn in ['no','n',false]%}
+ipn_password: ''
+ipn_username: ''
+{% endif %}
+wizard_template: simple
+output_plugin: excel
+wizard_ask_before_submit: True
+ssh_username: __not_set__
+ssh_password: __not_set__
+ssh_host: __not_set__
