@@ -31,6 +31,10 @@ Install jinjamator by running:
     pipx inject jinjamator git+https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks.git
 
 
+Usage
+==================
+
+
 Running Jinjamator as daemon
 -----------------------------
 
