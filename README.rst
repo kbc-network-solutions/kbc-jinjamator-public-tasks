@@ -8,14 +8,14 @@ Which tasks are included?
 -------------------------
 
 Currently following tasks have been made public:
-    * `vendor/cisco/ise/hostname_to_devicegroup <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/hostname_to_devicegroup/>`_
-    * `vendor/cisco/aci/maintenance/reports/contract_filters <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/contract_filters/>`_
-    * `vendor/cisco/aci/maintenance/reports/contracts <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/contracts/>`_
-    * `vendor/cisco/aci/maintenance/reports/endpoints <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/endpoints/>`_
-    * `vendor/cisco/aci/maintenance/reports/epgs <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/epgs/>`_
-    * `vendor/cisco/aci/maintenance/reports/interface_dom_stats <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/interface_dom_stats/>`_
-    * `vendor/cisco/aci/maintenance/reports/interface_error_counter <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/interface_error_counter/>`_
-    * `vendor/cisco/aci/configuration/add_legacy_vlan <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco//ise/add_legacy_vlan/>`_
+    * `vendor/cisco/ise/hostname_to_devicegroup <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/hostname_to_devicegroup/>`_
+    * `vendor/cisco/aci/maintenance/reports/contract_filters <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/contract_filters/>`_
+    * `vendor/cisco/aci/maintenance/reports/contracts <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/contracts/>`_
+    * `vendor/cisco/aci/maintenance/reports/endpoints <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/endpoints/>`_
+    * `vendor/cisco/aci/maintenance/reports/epgs <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/epgs/>`_
+    * `vendor/cisco/aci/maintenance/reports/interface_dom_stats <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/interface_dom_stats/>`_
+    * `vendor/cisco/aci/maintenance/reports/interface_error_counter <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/interface_error_counter/>`_
+    * `vendor/cisco/aci/configuration/add_legacy_vlan <https://github.com/kbc-network-solutions/kbc-jinjamator-public-tasks/tree/main/vendor/cisco/ise/add_legacy_vlan/>`_
 
 Installation
 ==================
@@ -44,6 +44,10 @@ To start jinjamator directly to fiddle around, run
     unset JINJAMATOR_AAA_LOCAL_ADMIN_PASSWORD
     unset JINJAMATOR_AAA_LOCAL_ADMIN_USERNAME
     jinjamator -d
+
+
+Now you can navigate to http://localhost:5000 and login with your username and password.
+Have fun.
 
 License
 -----------------
